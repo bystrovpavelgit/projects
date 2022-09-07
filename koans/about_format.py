@@ -34,7 +34,7 @@ def test_format_named():
 
     person = {'name': 'John Smith', 'place': 'NY'}
     str1 = 'name: {name}, city: {place}'.format(**person)
-    assert str1 == 'name: {name}, city: {place}'
+    assert str1 == 'name: John Smith, city: NY'
 
 
 def test_format_attributes():
@@ -53,7 +53,7 @@ def test_format_float():
         Можно управлять форматированием чисел с плавающей точкой
     """
     str1 = '{0:.3f}'.format(2144.45464576583)
-    assert str1 == '2144.445'
+    assert str1 == '2144.455'
 
 
 def test_format_truncate_string():
@@ -110,7 +110,7 @@ def test_format_truncate_align_floats():
     assert str1 == '0042'
 
     str1 = '{:07.3f}'.format(45.34354325)
-    assert str1 == '0000045.344'
+    assert str1 == '045.344'
 
 
 def test_format_datetime():
@@ -133,5 +133,5 @@ def test_format_truncate_align_parametrized():
     total_len = 7
 
     str1 = '{:{}{}.{after_dot}f}'.format(45.34354325, padding_number, total_len, after_dot=3)
-    assert str1 == '0000045.344'
+    assert str1 == '045.344'
 

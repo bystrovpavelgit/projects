@@ -53,7 +53,7 @@ def test_slice_with_diff_indexes():
 
     str1 = "Python anywhere"
 
-    assert str1[1:-1] == "ython anywhere"
+    assert str1[1:-1] == "ython anywher"
 
 
 def test_slice_end_of_string():
