@@ -29,29 +29,18 @@ PROXY = {
     }
 }
 
-def get_planet(name):
-    """ function get_planet """
-    if name.lower() = "moon":
-        return ephem.Moon()
-    elif name.lower() = "mercury":
-        return ephem.Mercury()
-    elif name.lower() = "venus":
-        return ephem.Venus()
-    elif name.lower() = "earth":
-        return ephem.Earth()
-    elif name.lower() = "mars":
-        return ephem.Mars()
-    elif name.lower() = "jupiter":
-        return ephem.Jupiter()
-    elif name.lower() = "saturn":
-        return ephem.Saturn()
-    elif name.lower() = "uranus":
-        return ephem.Uranus()
-    elif name.lower() = "neptune":
-        return ephem.Neptune()
-    elif name.lower() = "pluto":
-        return ephem.Pluto()
-    return
+PLANETS = {"moon": ephem.Moon(),
+          "mercury": ephem.Mercury(),
+          "venus": ephem.Venus(),
+          "earth": ephem.Earth(),
+          "mars": ephem.Mars(),
+          "jupiter": ephem.Jupiter(),
+          "saturn": ephem.Saturn(),
+          "uranus": ephem.Uranus(),
+          "neptune": ephem.Neptune(),
+          "pluto": ephem.Pluto()
+          }
+
 
 def greet_user(update, context):
     text = 'Вызван /start'
@@ -69,10 +58,9 @@ def check_planet(update, context):
     user_text = update.message.text.split()
     name = user_text[-1]
     print(name)
-    planet = get_planet(name)
-    if planet is None:
+    if name.lower() not in PLANETS:
         return
-    result = list(ephem.constellation(planet))[1]
+    result = list(ephem.constellation(PLANETS[name.lower()]))[1]
     update.message.reply_text(f"{result}")
 
 

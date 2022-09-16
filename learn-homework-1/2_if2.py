@@ -19,11 +19,11 @@ def check_str(str1, str2):
     """ function check_str """
     if not isinstance(str1, str) or not isinstance(str2, str):
         return 0
-    elif str1 == str2:
+    if str1 == str2:
         return 1
-    elif str1 != str2 and len(str1) > len(str2):
+    if len(str1) > len(str2):
         return 2
-    elif str1 != str2 and str2 == "learn":
+    if str2 == "learn":
         return 3
 
 
